@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html style="font-size: 12px;">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			.sign_btn{
+				width: 20.8rem;
+				height: 3.75rem;
+				margin: 0 auto;
+				display: block;
+			}
+		</style>
+		
+		<script type="text/javascript" src="../js/bridge.js" ></script>
+		<script type="text/javascript" src="../js/sign_in.js" ></script>
+		<title>扫码签到</title>
+	</head>
+	<body>
+		<div class="sign_bg_img">
+			
+		</div>
+		<div class="sign_div">
+			<input type="button" class="sign_btn" value="签到"/>
+		</div>
+		<script type="text/javascript">
+			window.onload =function(){
+				var winWidth = document.body.clientWidth;
+				var zoomRatio = winWidth/375;
+				document.getElementsByTagName('html')[0].style.fontSize = (12*zoomRatio)+'px'
+			}
+		</script>
+	</body>
+</html>

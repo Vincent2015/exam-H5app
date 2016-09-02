@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/exam.css" />		
+		<script type="text/javascript" src="assets/js/zepto.js" ></script>
+		<script type="text/javascript" src="assets/js/response.js" ></script>		
+		<title>用友文化3.0</title>
+		
+    
+	</head>
+	<body>
+	   <header class="header hidden">
+	        <div class="close hidden" onclick="window.close()"></div>	
+			<div class="back hidden" onclick="history.back()"></div>
+			<div class="htitle">文化四六级</div>
+		</header>
+		<div id="main" style="background-color: #DD4B4B;top:0">
+			<!--分享成绩-->
+			<div class="share_score_page">
+				<div class="share_score_wrap">
+					<div class="share_score_bg"></div>
+					<span>王宝宝</span>
+				</div>
+				<div class="share_score_rank">
+					<div class="share_score_div">
+						<span>答题用时</span>
+						<input type="text"  class="int_second_share" value="30" readonly="readonly"/>
+			 			<i class="dot_end_share"></i>
+			 			<input type="text" class="float_second_share" value="17" readonly="readonly"/>
+			 			<i class="unit_second_share">S</i>
+					</div>
+					<div class="share_rank_div">
+						<span>击败了用友集团<i>96.23%</i>的员工</span>
+					</div>
+					<div class="esn_qr_code">
+						<div class="code_top_bar"></div>
+						<div class="code_text">
+							<span>企业空间下载二维码</span>
+							<div class="code_img"></div>
+						</div>
+						<div class="code_bottom_bar"></div>
+					</div>
+					
+				</div>
+				<div  class="share_score_page">
+					<!-- 分享	 -->
+				</div>
+			</div>
+			
+		</div>
+		<script type="text/javascript">
+//		var basePath = "http://172.20.19.200:10555/yycollege/";
+		var basePath = "http://yycollege.upesn.com/yycollege/";
+			$(function(){
+				var memId = getRequest(location.search)["memId"];
+//				var username = getRequest(location.search)["username"];
+//				alert('------------');
+//				alert(username);
+//				username = getQueryString("username");
+//				alert(username);
+				var url = basePath + "exam/find?memberId="+memId;
+				$.ajax({
+					type : 'GET',
+					async : true,
+					url : url,
+					cache : false,
+					contentType : "application/json",
+					success : function(backData) {
+						console.log(JSON.stringify(backData));
+						if(backData.flag == "0"){
+							var resData = backData.data;
+							var secTime = parseInt(resData.bestDuration)/1000;
+							var timeArr = (secTime+"").split(".");
+							var leftTime = timeArr[0];
+							var rightTime;
+						    if (!(parseInt(resData.bestDuration) % 1000)){
+						      rightTime = "00";
+						    }else{
+						      rightTime = timeArr[1].substr(0,2);	
+						    }
+							
+							var username = resData.name; 
+							//初始化需要成绩的各个页面
+								//更换banner
+//								$(".home_best_score").css("display","block");
+								$('.share_score_wrap span').text(username);
+								$(".share_score_div input").eq(0).val(leftTime);
+								$(".share_score_div input").eq(1).val(rightTime);
+								$(".share_rank_div span i").html(resData.bestPercent);
+								//$(".home").css("background-image","url(./assets/img/exam_notice_bg.jpg)");
+						}
+
+					},
+					error : function(tt) {
+						debugInfo(tt);
+					}
+				});
+				
+			});
+			
+				/**
+		 * 从url中获得参数
+		 * @param {Object} url
+		 */
+		function getRequest(url) { 
+			var theRequest = new Object(); 
+			if (url.indexOf("?") != -1) { 
+				var str = url.substr(1); 
+				strs = str.split("&"); 
+				for(var i = 0; i < strs.length; i ++) { 
+				theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]); 
+				}; 
+			} 
+			return theRequest; 
+		}
+	
+	
+	function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(r[2]);
+    }
+    return null;
+}
+		</script>
+	</body>
+</html>

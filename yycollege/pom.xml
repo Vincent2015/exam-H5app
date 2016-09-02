@@ -1,0 +1,282 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yonyou.esn</groupId>
+  <artifactId>yycollege</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+		<aspectj.version>1.8.9</aspectj.version>
+		<druid.version>1.0.15</druid.version>
+		<fastjson.version>1.2.9</fastjson.version>
+		<httpclient.version>4.5.2</httpclient.version>
+		<json-path.version>2.2.0</json-path.version>
+		<log4j.version>1.2.14</log4j.version>
+		<mysql.driver.version>5.1.36</mysql.driver.version>
+		<mybatis.version>3.3.0</mybatis.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<mybatis-plugin.version>1.3.2</mybatis-plugin.version>
+		<servlet.version>3.1.0</servlet.version>
+		<slf4j.version>1.7.0</slf4j.version>
+		<spring.version>4.2.5.RELEASE</spring.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<dependencies>
+	
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>${aspectj.version}</version>
+		</dependency>
+		<!-- 数据库连接监控 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+		
+		<!-- json解析器 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		
+		<!-- http请求客户端 -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+			 <exclusions>
+	         <exclusion>
+	            <groupId>commons-logging</groupId>
+	            <artifactId>commons-logging</artifactId>
+	         </exclusion>
+	        </exclusions> 
+		</dependency>
+		
+		<!-- json解析器 -->
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>${json-path.version}</version>
+		</dependency>
+		
+		 <!-- 日志记录 -->
+		 <dependency>
+	      <groupId>org.slf4j</groupId>
+	      <artifactId>jcl-over-slf4j</artifactId>
+	      <version>${slf4j.version}</version>
+	   	</dependency>
+	   	<dependency>
+	      <groupId>org.slf4j</groupId>
+	      <artifactId>slf4j-api</artifactId>
+	      <version>${slf4j.version}</version>
+	   	</dependency>
+	   	<dependency>
+	      <groupId>org.slf4j</groupId>
+	      <artifactId>slf4j-log4j12</artifactId>
+	      <version>${slf4j.version}</version>
+	   	</dependency>
+	    <dependency>
+	      <groupId>log4j</groupId>
+	      <artifactId>log4j</artifactId>
+	      <version>${log4j.version}</version>
+	    </dependency>
+		    
+		<!-- mysql驱动 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.driver.version}</version>
+		</dependency>
+		
+		<!-- mybatis反向生成插件,生成时打开，完成后关闭该依赖 -->
+		<dependency>
+			<groupId>org.mybatis.generator</groupId>
+			<artifactId>mybatis-generator-maven-plugin</artifactId>
+			<version>${mybatis-plugin.version}</version>
+		</dependency>
+		
+		<!-- Mybatis -->
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring.version}</version>
+		</dependency>
+
+
+		<dependency>  
+		    <groupId>org.springframework</groupId>  
+		    <artifactId>spring-context</artifactId>  
+		    <version>${spring.version}</version> 
+		    <exclusions>
+	         <exclusion>
+	            <groupId>commons-logging</groupId>
+	            <artifactId>commons-logging</artifactId>
+	         </exclusion>
+	        </exclusions> 
+		</dependency>  
+	   	<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- 测试 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		
+		<!-- servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+		</dependency>
+		
+	</dependencies>
+
+
+
+	<!-- mybatis反向生成插件,生成时打开，完成后关闭该依赖 -->
+	<build>
+		<plugins>
+			<!-- mybatis反向生成插件,生成时打开，完成后关闭该依赖 -->
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.2</version>
+				<configuration>
+					<verbose>true</verbose>
+					<overwrite>true</overwrite>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                	<!-- 设置war包名称 -->
+                    <warName>yycollege</warName>
+                    <!-- 激活spring profile -->
+                    <webResources>
+                        <resource>
+                            <filtering>true</filtering>
+                            <directory>src/main/webapp</directory>
+                            <includes>
+                                <include>**/web.xml</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+                </configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<!-- 测试环境 -->
+		<profile>
+			<id>testing</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<profiles.activation>testing</profiles.activation>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat-maven-plugin</artifactId>
+						<version>2.2</version>
+						
+						<configuration>
+							<url></url>
+							<path></path>
+							<server></server>
+							<warFile></warFile>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- 开发环境 -->
+		<profile>
+			<id>development</id>
+			<properties>
+				<profiles.activation>development</profiles.activation>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<url></url>
+							<path></path>
+							<server></server>
+							<warFile></warFile>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- 生产环境 -->
+		<profile>
+			<id>produce</id>
+			<properties>
+				<profiles.activation>produce</profiles.activation>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<url></url>
+							<path></path>
+							<server></server>
+							<warFile></warFile>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

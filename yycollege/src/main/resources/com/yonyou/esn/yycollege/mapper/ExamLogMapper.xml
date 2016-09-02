@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.esn.yycollege.mapper.ExamLogMapper" >
+  <resultMap id="BaseResultMap" type="com.yonyou.esn.yycollege.model.ExamLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="duration" property="duration" jdbcType="BIGINT" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, duration, member_id, name, dept_name, remark, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.yonyou.esn.yycollege.model.ExamLog" >
+    insert into exam_log (id, duration, member_id, 
+      name, dept_name, remark, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{duration,jdbcType=BIGINT}, #{memberId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yonyou.esn.yycollege.model.ExamLog" >
+    insert into exam_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="duration != null" >
+        duration,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="deptName != null" >
+        dept_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yonyou.esn.yycollege.model.ExamLog" >
+    update exam_log
+    <set >
+      <if test="duration != null" >
+        duration = #{duration,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yonyou.esn.yycollege.model.ExamLog" >
+    update exam_log
+    set duration = #{duration,jdbcType=BIGINT},
+      member_id = #{memberId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

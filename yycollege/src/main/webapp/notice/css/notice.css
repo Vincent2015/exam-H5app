@@ -1,0 +1,135 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html{
+	font-size: 75px;
+
+}
+body,.wraper{
+ position: relative;
+ /*top: 0.2rem;
+ /*top: 0;*/
+ /*bottom:0;*/
+ width: 100%;
+}
+body{
+	padding-bottom: 1.4rem;
+}
+.header{
+    padding: 0 0.4rem 0.24rem;
+}
+.header .company{
+	margin: 0.42rem auto 0.4rem;
+	font-size: 0.53rem;
+	color: #ff4e5b;
+    text-align: center;
+    font-weight: bold;
+}
+.dispather_rel{
+    font-size: 0.24rem;
+    color: #b7c0c7;
+}
+.dispatch_word,.dispatch_num,.dispatch_year{
+	font-style: normal;
+	color: red;
+}
+.dispatch{
+	float: left;
+}
+.code{
+	float: right;
+}
+.dispatch_word{
+    margin-left: 0.13rem;
+    margin-right: 0.13rem;
+}
+.notice_about{
+	padding: 0 0.4rem 0;
+}
+.topic{
+	display: block;
+	font-size: 0.4rem;
+	border-top: 1px solid #ff4e5b;
+	margin-bottom: 0.4rem;
+	/*margin-top: 0.53rem;*/
+    /*padding-top: 0.25rem;*/
+    padding-top: 0.4rem;
+	height: 0.46rem;
+	line-height: 0.46rem;
+}
+.name,.time,.valid,.auth{
+	display: block;
+	margin-bottom: 0.26rem;
+	font-size: 0.32rem;
+	color: #b7c0c7;
+}
+.auth{
+	margin-bottom: 0.4rem;
+}
+.notice_gen{
+	color: #292F33;
+	font-size: 0.37rem;
+	line-height: 0.73rem;
+}
+
+.part_one,.part_two,.part_three{
+	padding: 0 0.4rem 0;
+}
+.part_one_title,.part_two_title,.part_three_title{
+	font-size: 0.45rem;
+    color: #ff4e5b;
+    margin-top: 0.66rem;
+    padding-bottom: 0.26rem;
+	border-bottom: 1px solid #ff4e5b;
+	font-weight: bold;
+}
+.part_one_content,.part_two_content,.part_three_content{
+	padding-top: 0.4rem;
+	font-size: 0.37rem;
+	line-height: 0.73rem;
+	color: #292F33;
+}
+.footer{
+	position: relative;
+}
+
+.footer .more_info{
+	color: #b7c0c7;
+    font-size: 0.32rem;
+    margin-top: 0.66rem;
+    margin-left: 0.4rem;
+    padding-bottom: 0.266rem;
+    border-bottom: 1px solid #ff4e5b;
+}
+.footer .yy_logo{
+    position: absolute;
+    left: 50%;
+    margin-left: -0.36rem;
+    display: inline-block;
+    width: 0.72rem;
+    height: 0.48rem;
+    margin-top: 0.33rem;
+    margin-bottom: 0.33rem;
+    background: url(../img/yy_logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+
+/*浮动想关*/
+.clearfix {
+	zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}

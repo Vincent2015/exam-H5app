@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd
+	">
+	
+	<!-- 开发环境 -->
+	<beans profile="development">
+		<context:property-placeholder ignore-unresolvable="true" 
+			location="classpath*:/env/default.properties, classpath*:/env/development.properties"/>
+		<util:properties id="yycollegeEnv" location="classpath*:/env/development.properties"></util:properties>
+	</beans>
+	
+	<!-- 测试环境 -->
+	<beans profile="testing">
+		<context:property-placeholder ignore-unresolvable="true" location="classpath*:/env/default.properties, classpath*:/env/testing.properties"/>
+		<util:properties id="yycollegeEnv" location="classpath*:/env/testing.properties"></util:properties>
+	</beans>
+	
+	<!-- 预上线环境 -->
+	<beans profile="produce">
+		<context:property-placeholder ignore-unresolvable="true" location="classpath*:/env/default.properties, classpath*:/env/preproduct.properties"/>
+		<util:properties id="yycollegeEnv" location="classpath*:/env/preproduct.properties"></util:properties>
+	</beans>
+	
+	<!-- 生产环境 -->
+	<beans profile="produce">
+		<context:property-placeholder ignore-unresolvable="true" location="classpath*:/env/default.properties, classpath*:/env/produce.properties"/>
+		<util:properties id="yycollegeEnv" location="classpath*:/env/produce.properties"></util:properties>
+	</beans>
+</beans>
+

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Expires" CONTENT="0"> 
+		<link rel="stylesheet" href="assets/css/exam.css" />
+		<!--<script type="text/javascript" src="assets/js/bridge.js" ></script>-->
+		<script type="text/javascript" src="assets/js/zepto.js" ></script>
+		<script type="text/javascript" src="assets/js/response.js" ></script>
+		<script type="text/javascript" src="assets/js/fastclick.js" ></script>
+		
+		<title>考试</title>
+		<script type="text/javascript">
+        function connectWebViewJavascriptBridge(callback){
+            if (window.WebViewJavascriptBridge) {
+                callback(WebViewJavascriptBridge)
+            } else {
+                document.addEventListener('WebViewJavascriptBridgeReady', function(){
+                    callback(WebViewJavascriptBridge)
+                }, false)
+            }
+        }
+    </script>
+	</head>
+	<body>
+	   <header class="header">
+	        <div class="close hidden" onclick="window.close()"></div>	
+			<div class="back hidden" onclick="history.back()"></div>
+			<div class="htitle">文化四六级</div>
+		</header>
+		<div id="main">
+			<!--考试规则首页-->
+			 <div class="home_page">
+			 	<div class="home">
+			 		<div class="home_best_score">
+			 			<div class="home_score_div">
+						<span>您最好成绩用时</span>
+						<input type="text" id="bst-1" class="int_second_share" value="30" readonly="readonly"/>
+			 			<i class="dot_end_home"></i>
+			 			<input type="text" id="bst-2" class="float_second_share" value="17" readonly="readonly"/>
+			 			<i class="unit_second_home">S</i>
+						</div>
+						<div class="home_rank_div">
+							<span>击败了用友集团<i id="bst-3">96.23%</i>的员工</span>
+						</div>
+			 		</div>
+			 	</div>
+			 	<div class="home_opt">
+			 		<div class="start"></div>
+			 		<div class="rank"></div>
+			 	</div>
+			 </div>
+			 
+			 <!--答题倒计时-->
+			 <div class="count_down_page hidden">
+			 	<div class="time_count_down"></div>
+			 	<div class="tip_info">
+			 		
+			 	</div>
+			 </div>
+			 
+			 <!--试题页面-->
+			 <div class="exam_page hidden" >
+			 	<div class="exam_used_time">
+			 		<div class="used_time_info">
+			 			<input type="text" value="30" readonly="readonly"/>
+			 			<i class="dot"></i>
+			 			<input type="text" value="30" readonly="readonly"/>
+			 			<i class="unit_second">S</i>
+			 		</div>
+			 	</div>
+			 	<div class="paper_wrap">
+			 		<div class="count_title">
+			 			<div class="answer_counts_title">
+				 			<div class="answer_counts">
+				 				<span class="answer_counts_left">答题数</span>
+				 				<span class="answer_counts_right"><i>8</i>/10</span>
+				 			</div>
+				 			<div class="paper_title">
+				 				<span class="title_content">8.用友企业的核心价值观是什么？</span>
+				 			</div>
+			 			</div>
+			 			
+			 			<div class="paper_content">
+			 				<div class="options">
+				 				<input type="radio" name="option" id="a"/>
+				 				<label for="a"></label>
+				 				<span>团结奋斗 自强不息</span>
+			 				</div>
+			 				<div class="options">
+				 				<input type="radio" name="option" id="b"/>
+				 				<label for="b"></label>
+				 				<span>做客户信赖的长期合作伙伴</span>
+			 				</div>
+			 				<div class="options">
+				 				<input type="radio" name="option" id="c" />
+				 				<label for="c"></label>
+				 				<span>专业化生存 </span>
+			 				</div>
+			 				<div class="options">
+				 				<input type="radio" name="option" id="d"/>
+				 				<label for="d"></label>
+				 				<span>俄罗斯</span>
+			 				</div>
+			 			</div>
+			 		</div>
+			 		
+			 	</div>
+			 	<div class="page_turning_eff" ></div>
+			 	<!--遮罩相关-->
+			 	<div class="model_layer"></div>
+			 	<div class="model_content">
+			 		<div class="answer_pic"></div>
+			 		<div class="answer_res_info">再接再厉哦!</div>
+			 	</div>
+			 	
+				 <!--放弃答题-->
+				 <!--<div class="quit_layer"></div>
+				 <div class="quit_content">
+				 	<span class="quit_close"></span>
+				 	<span class="quit_info">确定要放弃答题?</span>
+				 	<div class="quit_confirm_cancel">
+				 		<span class="confirm_quit"></span>
+				 		<span class="cancel_quit"></span>
+				 	</div>
+				 </div>-->
+			 </div>
+			 
+			 	
+			 	
+			<!--考试通过(首次/非首次考试)-->
+			<div class="exam_pass_page hidden"  >
+				<div class="this_scores">
+					<div class="this_cost_time">
+						<span>您一共用时</span>
+						<input type="text"  class="int_second" value="30" readonly="readonly"/>
+			 			<i class="dot_end"></i>
+			 			<input type="text" class="float_second" value="30" readonly="readonly"/>
+			 			<i class="unit_second_end">S</i>
+					</div>
+					<div class="this_victory">
+						<span>击败了用友集团<br><i>66.23%</i>的员工</span>
+					</div>
+				</div>
+				<div class="best_scores">
+					<span>您的历史最佳成绩<i>60.3</i>s</span>
+					<span>击败了用友集团<i class="best">96.23%</i>的员工</span>
+				</div>
+				<div class="split_line"></div>
+				<div class="scores_opt">
+					<div class="re_challenge"></div>
+					<div class="share"></div>
+					<div class="get_prize"></div>
+				</div>
+			</div>
+			
+			<!--成绩单-->
+			<div class="score_page hidden">
+				<div class="top active">
+				  <div class="rank">用友文化3.0前20强</div>
+				  <div class="rankword">您目前排名<em>10</em>
+                        <div class="time">截至时间：2016年9月12日 22:00</div>
+				  </div>
+				</div>
+				<ul class="scorelist">
+					<li class="scoreitem">
+						<div class="ranknum h">
+							<div class="num">1</div>
+						</div>
+
+						<div class="info">
+							<span class="name">刘海超</span>
+							<span class="dep">社交与协同事业部</span>
+						</div>
+
+						<div class="score">
+							30.88 s
+						</div>
+					</li>
+					<li class="scoreitem">
+						<div class="ranknum m">
+							<div class="num">2</div>
+						</div>
+
+						<div class="info">
+							<span class="name">小猫</span>
+							<span class="dep">社交与协同事业部</span>
+						</div>
+
+						<div class="score">
+							30.88 s
+						</div>
+					</li>
+
+						<li class="scoreitem">
+						<div class="ranknum l">
+							<div class="num">3</div>
+						</div>
+
+						<div class="info">
+							<span class="name">蓝天白云</span>
+							<span class="dep">社交与协同事业部</span>
+						</div>
+
+						<div class="score">
+							30.88 s
+						</div>
+					</li>
+					<li class="scoreitem">
+						<div class="ranknum">
+							<div class="num">4</div>
+						</div>
+
+						<div class="info">
+							<span class="name">冬雨</span>
+							<span class="dep">社交与协同事业部</span>
+						</div>
+
+						<div class="score">
+							30.88 s
+						</div>
+					</li>
+
+						<li class="scoreitem">
+						<div class="ranknum">
+							<div class="num">5</div>
+						</div>
+
+						<div class="info">
+							<span class="name">李志刚</span>
+							<span class="dep">社交与协同事业部</span>
+						</div>
+
+						<div class="score">
+							30.88 s
+						</div>
+					</li>
+					<li class="scoreitem">
+						<div class="ranknum">
+							<div class="num">6</div>
+						</div>
+
+						<div class="info">
+							<span class="name">靳忠志 </span>
+							<span class="dep">社交与协同事业部</span>
+						</div>
+
+						<div class="score">
+							30.88 s
+						</div>
+					</li>
+					<li class="scoreitem">
+						<div class="ranknum">
+							<div class="num">7</div>
+						</div>
+
+						<div class="info">
+							<span class="name">董建委</span>
+							<span class="dep">社交与协同事业部</span>
+						</div>
+
+						<div class="score">
+							30.88 s
+						</div>
+					</li>
+
+				</ul>
+			</div>
+			
+			<!--分享成绩-->
+			<div class="share_score_page hidden">
+				<div class="share_score_wrap">
+					<div class="share_score_bg"></div>
+					<span>王宝宝</span>
+				</div>
+				<div class="share_score_rank">
+					<div class="share_score_div">
+						<span>您一共用时</span>
+						<input type="text" id="bst-4" class="int_second_share" value="30" readonly="readonly"/>
+			 			<i class="dot_end_share"></i>
+			 			<input type="text" id="bst-5" class="float_second_share" value="17" readonly="readonly"/>
+			 			<i class="unit_second_share">S</i>
+					</div>
+					<div class="share_rank_div">
+						<span>击败了用友集团<i>96.23%</i>的员工</span>
+					</div>
+					<div class="esn_qr_code">
+						<div class="code_top_bar"></div>
+						<div class="code_text">
+							<span>企业空间下载二维码</span>
+							<div class="code_img"></div>
+						</div>
+						<div class="code_bottom_bar"></div>
+					</div>
+					
+				</div>
+				<div id="shareexam">
+					晒晒你的成绩	
+				</div>
+			</div>
+			
+			<!--<div class="pre">
+				<span >&lt
+				</span>
+			</div> 
+			<div class="next">
+				<span >&gt
+				</span>
+			</div> -->			
+		</div>
+		 <script type="text/javascript">
+        var fn = function(YonYouJSBridge){          
+
+            YonYouJSBridge.init(function(message, responseCallback){}); //初始化,(页面中只能初始化一次，不可多次)            
+
+            //分享
+            function share(){
+                var title = 'test啊', content = 'a后端b',
+                    data = '{"function":"share","parameters":{"content":"' + content + '","title":"' + title + '","url":"http://upesn.com","imgUrl":"http://test.front.upesn.com/esn/images/setting/logo-30.png"}}';
+                    YonYouJSBridge.send(data, function(responseData){});
+            }
+
+
+           function hiddenMenu() {
+            // body...
+            
+                var data = '{"function":"hiddenMenu","parameters":{"nav_color":"#fc5b3e"}}';
+                YonYouJSBridge.send(data, function(responseData){});
+            } 
+            
+            hiddenMenu();           
+
+        };       
+
+        connectWebViewJavascriptBridge(fn);
+    </script>
+    <script type="text/javascript" src="assets/js/exam.js" ></script>
+	</body>
+</html>

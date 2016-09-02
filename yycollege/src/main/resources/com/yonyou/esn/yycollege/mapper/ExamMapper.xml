@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yonyou.esn.yycollege.mapper.ExamMapper" >
+  <resultMap id="BaseResultMap" type="com.yonyou.esn.yycollege.model.Exam" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="duration" property="duration" jdbcType="BIGINT" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, duration, member_id, name, dept_name, remark, update_time
+  </sql>
+  
+  <sql id="Time_Interval" >
+    <if test="startTime != null">
+    <![CDATA[ 
+    	and update_time >= #{startTime}
+    ]]>
+    </if>
+     <if test="endTime != null">
+    <![CDATA[ 
+    	and  update_time <= #{endTime}
+    ]]>
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="getExamScoreByMemberId" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam
+    where member_id = #{memberId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getHeroListByDuration" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam
+	    <where>
+	    	<if test="startTime != null">
+    <![CDATA[
+	    		update_time >= #{startTime} and
+    ]]>
+	    	</if>
+	    	<if test="endTime != null">
+    <![CDATA[
+	    		update_time <= #{endTime}
+    ]]>
+	    	</if>
+	    </where>
+    ORDER BY duration,update_time
+    LIMIT 0,#{number}
+  </select>
+  
+  
+  <select id="getTotalCount" resultType="java.lang.Integer">
+    select count(member_id)
+    from exam
+    <where>
+    	<include refid="Time_Interval" />
+    </where>
+  </select>
+  
+  <select id="getLaterPersonCount" resultType="java.lang.Integer">
+    select count(member_id)
+    from exam
+    <![CDATA[ 
+    where duration > #{duration}
+    ]]>
+    <include refid="Time_Interval" />
+  </select>
+  
+  <insert id="insert" parameterType="com.yonyou.esn.yycollege.model.Exam" >
+    insert into exam (id, duration, member_id, 
+      name, dept_name, remark,update_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{duration,jdbcType=BIGINT}, #{memberId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{updateTime,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yonyou.esn.yycollege.model.Exam" >
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="duration != null" >
+        duration,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="deptName != null" >
+        dept_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      update_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      #{updateTime,jdbcType=BIGINT}
+    </trim>
+  </insert>
+  <update id="updateByMemberId" parameterType="com.yonyou.esn.yycollege.model.Exam" >
+    update exam
+    <set >
+      <if test="duration != null" >
+        duration = #{duration,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+   	 update_time = #{updateTime,jdbcType=BIGINT}
+    </set>
+    where member_id = #{memberId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yonyou.esn.yycollege.model.Exam" >
+    update exam
+    set duration = #{duration,jdbcType=BIGINT},
+      member_id = #{memberId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

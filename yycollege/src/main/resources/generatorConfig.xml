@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="D:\dev_tools\dev_libs\.m2\repository\mysql\mysql-connector-java\5.1.37\mysql-connector-java-5.1.37.jar" />
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 去除自动生成的注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        	 connectionURL="jdbc:mysql://172.20.19.200:3306/yy_college" userId="yonyou_college" password="yonyou_college">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+        	<!-- 是否强制转换Decimal或number域为java的BigDecimal -->
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+		<!-- java domain 位置,targetProject可以写fs位置 -->
+        <javaModelGenerator targetPackage="com.yonyou.esn.yycollege.model"
+            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <!-- setter方法是否过滤空字符 -->
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+		<!-- 生成的映射xml位置 -->
+        <sqlMapGenerator targetPackage="com.yonyou.esn.yycollege.mapper"
+            targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+		<!-- 生成映射mapper接口位置 -->
+       <javaClientGenerator type="XMLMAPPER"
+            targetPackage="com.yonyou.esn.yycollege.mapper"
+            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        
+        <!-- 需要自动逆向生成代码的表 -->
+       <!--  <table tableName="register"  domainObjectName="Register" 
+        	enableCountByExample="false"
+            enableUpdateByExample="false" 
+            enableDeleteByExample="false"
+            enableSelectByExample="false" 
+            selectByExampleQueryId="false" 
+            enableInsert="true" 
+            enableSelectByPrimaryKey="true" 
+            enableUpdateByPrimaryKey="true" 
+            enableDeleteByPrimaryKey="rue">
+            
+            
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+        </table>
+        <table tableName="exam"  domainObjectName="Exam" 
+        	enableCountByExample="false"
+            enableUpdateByExample="false" 
+            enableDeleteByExample="false"
+            enableSelectByExample="false" 
+            selectByExampleQueryId="false" 
+            enableInsert="true" 
+            enableSelectByPrimaryKey="true" 
+            enableUpdateByPrimaryKey="true" 
+            enableDeleteByPrimaryKey="rue">
+            
+            
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+        </table> -->
+      <!--   <table tableName="test_paper"  domainObjectName="TestPaper" 
+        	enableCountByExample="false"
+            enableUpdateByExample="false" 
+            enableDeleteByExample="false"
+            enableSelectByExample="false" 
+            selectByExampleQueryId="false" 
+            enableInsert="true" 
+            enableSelectByPrimaryKey="true" 
+            enableUpdateByPrimaryKey="true" 
+            enableDeleteByPrimaryKey="rue">
+            
+            
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+        </table> -->
+        <table tableName="exam_log"  domainObjectName="ExamLog" 
+        	enableCountByExample="false"
+            enableUpdateByExample="false" 
+            enableDeleteByExample="false"
+            enableSelectByExample="false" 
+            selectByExampleQueryId="false" 
+            enableInsert="true" 
+            enableSelectByPrimaryKey="true" 
+            enableUpdateByPrimaryKey="true" 
+            enableDeleteByPrimaryKey="rue">
+            
+            
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+        </table>
+    </context>
+</generatorConfiguration>
